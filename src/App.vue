@@ -30,6 +30,14 @@ const objetoFruta = {
   stock: 20,
 }
 const activo = true;
+
+
+//metodo
+const handleClick = () => {
+  console.log('click');
+}
+
+
 </script>
 
 <template>
@@ -59,6 +67,8 @@ const activo = true;
   </ul>
 
 
+
+  <button v-on:click="handleClick">Activar</button>
 </template>
 
 <style>
