@@ -48,6 +48,17 @@ const activo = true;
       {{index}} {{propiedad}} {{fruta}}
     </li>
   </ul>
+
+
+  <ul>
+    <template v-for="item in arrayFrutas" :key="item.name">
+      <li v-if="item.stock > 0">
+        {{item.name}} - {{item.price}}
+      </li>
+    </template>
+  </ul>
+
+
 </template>
 
 <style>
