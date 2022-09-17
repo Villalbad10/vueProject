@@ -33,8 +33,8 @@ const activo = true;
 
 
 //metodo
-const handleClick = () => {
-  console.log('click');
+const handleClick = (sms) => {
+  console.log(sms);
 }
 
 
@@ -68,7 +68,9 @@ const handleClick = () => {
 
 
 
-  <button v-on:click="handleClick">Activar</button>
+  <button v-on:click.right.prevent="handleClick('click derecho')">Activar derecho</button>
+  <button v-on:click.middle="handleClick('click scroll')">Activar scroll</button>
+  <button v-on:click="handleClick('Click izquierdo')">Activar izquierdo</button>
 </template>
 
 <style>
