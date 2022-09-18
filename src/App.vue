@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 
 const name = 'Diego Villalba';
@@ -50,6 +51,12 @@ const disminuir = () => {
 }
 const reset = () => contador.value = 0;
 
+
+const classCounter = computed(() => {
+  if (contador.value === 0) return 'zero'
+  if (contador.value > 0) return 'positivo'
+  if (contador.value < 0) return 'negative'
+})
 </script>
 
 <template>
@@ -86,7 +93,7 @@ const reset = () => contador.value = 0;
 
 
 
-  <h2 :class="contador >0 ? 'positivo': 'negative'">Contador {{contador}}</h2>
+  <h2 :class="classCounter">Contador {{contador}}</h2>
   <button @click="increment">Incrementar</button>
   <button @click="reset">Reset</button>
   <button @click="disminuir">Decrementar</button>
@@ -103,5 +110,9 @@ h1 {
 
 .negative {
   color: red;
+}
+
+.zero {
+  color: grey;
 }
 </style>
