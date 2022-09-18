@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue';
+
 const name = 'Diego Villalba';
 const styleColor = 'color:red';
 const arrayColores = ['hola', 'num', 'text'];
@@ -38,6 +40,16 @@ const handleClick = (sms) => {
 }
 
 
+const contador = ref(0);
+
+const increment = () => {
+  contador.value++
+}
+const disminuir = () => {
+  contador.value--
+}
+const reset = () => contador.value = 0;
+
 </script>
 
 <template>
@@ -68,13 +80,28 @@ const handleClick = (sms) => {
 
 
 
-  <button v-on:click.right.prevent="handleClick('click derecho')">Activar derecho</button>
-  <button v-on:click.middle="handleClick('click scroll')">Activar scroll</button>
-  <button v-on:click="handleClick('Click izquierdo')">Activar izquierdo</button>
+  <button @click.right.prevent="handleClick('click derecho')">Activar derecho</button>
+  <button @click.middle="handleClick('click scroll')">Activar scroll</button>
+  <button @click="handleClick('Click izquierdo')">Activar izquierdo</button><br>
+
+
+
+  <h2 :class="contador >0 ? 'positivo': 'negative'">Contador {{contador}}</h2>
+  <button @click="increment">Incrementar</button>
+  <button @click="reset">Reset</button>
+  <button @click="disminuir">Decrementar</button>
 </template>
 
 <style>
 h1 {
   color: blue;
+}
+
+.positivo {
+  color: green;
+}
+
+.negative {
+  color: red;
 }
 </style>
